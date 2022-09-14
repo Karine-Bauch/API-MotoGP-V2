@@ -1,0 +1,4 @@
+%syntax-version=1.0.0
+%project=motogpv2
+
+1-initDB 2022-09-13T12:47:40Z System Administrator <root@MBP-de-Karine-001> # init and creation of DB - DDL
