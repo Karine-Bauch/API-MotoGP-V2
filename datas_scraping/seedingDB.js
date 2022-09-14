@@ -4,19 +4,24 @@ const fs = require('fs');
 async function getDatas(url) {
   try {
     const result = await axios.get(url);
+    const riders = result.data;
+    console.log(riders);
 
-    console.log(result.data);
+    let datas = [];
 
-    result.data.forEach((element) => {
-      let rider = {
-        firstname: element.name,
-        lastname: element.surname,
-        number: element.current_career_step.number.toString(),
-      }
+    riders.forEach((element) => {
+      datas.push(`
+      (${element.name}, ${element.surname}, ${element.current_career_step.number.toString()}),`)
+    });
+    
+    datas = datas.join('');
 
-      fs.writeFile(
-        `datas_scraping/sql_files/sql-test-${rider.number}.sql`,
-        `INSERT INTO "rider" ("firstname", "lastname", "number") VALUES (${rider.firstname}, ${rider.lastname}, ${rider.number});`,
+    console.log(datas);
+    
+
+    fs.writeFile(
+      `datas_scraping/sql_files/sql-test-riders.sql`,
+      `INSERT INTO "rider" ("firstname", "lastname", "number") VALUES ${datas};`,
         function (err) {
           if (err) {
             console.log('an error occured while JSON Object to file');
@@ -24,9 +29,7 @@ async function getDatas(url) {
           }
           console.log('JSON file has been saved');
         }
-      );
-
-    })
+    );
 
   } catch (error) {
     console.log(error);

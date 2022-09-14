@@ -1,1 +1,0 @@
-INSERT INTO "rider" ("firstname", "lastname", "number") VALUES (Sylvain, Guintoli, 50);
