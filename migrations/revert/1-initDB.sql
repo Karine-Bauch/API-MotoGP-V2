@@ -2,6 +2,6 @@
 
 BEGIN;
 
-DROP TABLE IF EXISTS "rider", "team", "manufacturer", "season", "race", "track", "rider_has_race", "rider_has_team", "rider_has_season", "team_has_manufacturer";
+DROP TABLE IF EXISTS "rider", "team", "manufacturer", "season", "race", "track", "rider_has_race", "rider_has_team", "team_has_manufacturer";
 
 COMMIT;

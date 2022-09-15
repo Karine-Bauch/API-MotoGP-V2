@@ -5,31 +5,47 @@ async function getDatas(url) {
   try {
     const result = await axios.get(url);
     const riders = result.data;
-    console.log(riders);
 
+    let urls = [];
     let datas = [];
 
-    riders.forEach((element) => {
-      datas.push(`
-      (${element.name}, ${element.surname}, ${element.current_career_step.number.toString()}),`)
+    await riders.forEach((element) => {
+      urls.push(`https://api.motogp.com/riders-api/riders/${element.id}`);      
     });
     
-    datas = datas.join('');
+    await urls.forEach(async (element) => {
+      let riderDatas = await axios.get(element);
+      riderDatas = riderDatas.data;
+      
+      // console.log(riderDatas);
 
-    console.log(datas);
-    
+     datas.push(`
+     ('${riderDatas.career[0].number}', '${riderDatas.name}', '${riderDatas.surname}', '${riderDatas.birth_date}', '${riderDatas.country.name}', '${riderDatas.physical_attributes.height}', '${riderDatas.physical_attributes.weight}', '${riderDatas.biography.text.replaceAll("'", "''")}')`);
+    });
+    // 
 
-    fs.writeFile(
-      `datas_scraping/sql_files/sql-test-riders.sql`,
-      `INSERT INTO "rider" ("firstname", "lastname", "number") VALUES ${datas};`,
-        function (err) {
-          if (err) {
-            console.log('an error occured while JSON Object to file');
-            return console.log(err);
+    setTimeout(() => {
+      datas = datas.join(', ');
+      console.log(datas);
+    }, 1500);
+
+    setTimeout(() => {
+      fs.writeFile(
+        `datas_scraping/sql_files/sql-test-riders.sql`,
+        `INSERT INTO "rider" ("number", "firstname", "lastname", "birth_date", "country", "height", "weight", "biography") VALUES ${datas};`,
+          function (err) {
+            if (err) {
+              console.log('an error occured while JSON Object to file');
+              return console.log(err);
+            }
+            console.log('JSON file has been saved');
           }
-          console.log('JSON file has been saved');
-        }
-    );
+      );
+    }, 3000);  
+
+    // datas = datas.join('');    
+
+    
 
   } catch (error) {
     console.log(error);

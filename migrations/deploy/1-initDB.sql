@@ -3,7 +3,7 @@
 BEGIN;
 
 
-DROP TABLE IF EXISTS "rider", "team", "manufacturer", "season", "race", "track", "rider_has_race", "rider_has_team", "rider_has_season", "team_has_manufacturer";
+DROP TABLE IF EXISTS "rider", "team", "manufacturer", "season", "race", "track", "rider_has_race", "rider_has_team", "team_has_manufacturer";
 
 -- Main tables creation
 
@@ -95,13 +95,6 @@ CREATE TABLE "team_has_manufacturer" (
   "exit_date" TIMESTAMPTZ,
   "created_at" TIMESTAMPTZ NOT NULL DEFAULT now(),
   "updated_at" TIMESTAMPTZ
-);
-
-CREATE TABLE "rider_has_season" (
-  "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-  "rider_id" INT REFERENCES "rider"("id"),
-  "season_id" INT REFERENCES "season"("id"),
-  "created_at" TIMESTAMPTZ NOT NULL DEFAULT now()
 );
 
 
