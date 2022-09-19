@@ -1,9 +1,11 @@
 const axios = require('axios');
 const fs = require('fs');
 
-async function getDatas(url) {
+async function getRidersDatas(url) {
   try {
-    const result = await axios.get(url);
+    const result = await axios.get(
+      url,
+    );
     const riders = result.data;
 
     let urls = [];
@@ -52,4 +54,5 @@ async function getDatas(url) {
   }
 }
 
-getDatas('https://api.motogp.com/riders-api/season/2022/riders?category=737ab122-76e1-4081-bedb-334caaa18c70');
+getRidersDatas('https://api.motogp.com/riders-api/season/2022/riders?category=737ab122-76e1-4081-bedb-334caaa18c70'); // 2022 Season
+// All seasons should be https://api.motogp.com/riders-api/riders?category=737ab122-76e1-4081-bedb-334caaa18c70

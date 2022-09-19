@@ -40,8 +40,6 @@ CREATE TABLE "manufacturer" (
 CREATE TABLE "season" (
   "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   "year" INT NOT NULL,
-  "begin_date" TIMESTAMPTZ NOT NULL,
-  "finish_date" TIMESTAMPTZ NOT NULL,
   "created_at" TIMESTAMPTZ NOT NULL DEFAULT now(),
   "updated_at" TIMESTAMPTZ
 );
