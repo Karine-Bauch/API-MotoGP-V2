@@ -1,3 +1,4 @@
+
 -- Deploy motogpv2:1-initDB to pg
 
 BEGIN;
@@ -97,3 +98,4 @@ CREATE TABLE "team_has_manufacturer" (
 
 
 COMMIT;
+

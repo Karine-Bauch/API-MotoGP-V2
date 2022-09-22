@@ -1,15 +1,15 @@
 import express from 'express';
-const pilotController = require('../controllers/pilotController');
+const riderRouter = require('./riderRouter');
 
 const router = express.Router();
 
 router.all('/', () => { console.log('page accueil') });
 
-router.use('/pilots', pilotController.getAll);
+router.use('/riders', riderRouter);
 
-router.use(() => {
-  console.log('Error 404: API route not found');
-})
+// router.use('/*', () => {
+//   console.log('Error 404: API route not found');
+// })
 
 export default router;
 

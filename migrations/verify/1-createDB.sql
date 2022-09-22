@@ -1,4 +1,4 @@
--- Verify motogpv2:1-initDB on pg
+-- Verify api-motogp-v2:1-createDB on pg
 
 BEGIN;
 

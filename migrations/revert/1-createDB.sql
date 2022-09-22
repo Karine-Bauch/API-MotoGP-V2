@@ -1,4 +1,4 @@
--- Revert motogpv2:1-initDB from pg
+-- Revert api-motogp-v2:1-createDB from pg
 
 BEGIN;
 
