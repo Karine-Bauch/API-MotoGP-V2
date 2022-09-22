@@ -9,5 +9,10 @@ module.exports = {
   async getOne(req: any, res: any) {
     const rider = await riderDatamapper.findOne(req.params.id);
     return res.json(rider);
+  },
+
+  async getByNumber(req: any, res: any) {
+    const rider = await riderDatamapper.findByNumber(req.params.id);
+    return res.json(rider);
   }
 }
