@@ -5,8 +5,14 @@ async function getRidersDatas(url) {
   try {
     const result = await axios.get(
       url,
+      // {
+      //   "Access-Control-Allow-Origin": "*",
+      //   "Content-Type": "application/json",
+      // }
     );
     const riders = result.data;
+
+    // console.log(riders);
 
     let urls = [];
     let datas = [];
@@ -19,10 +25,14 @@ async function getRidersDatas(url) {
       let riderDatas = await axios.get(element);
       riderDatas = riderDatas.data;
       
-      // console.log(riderDatas);
+      console.log(riderDatas);
 
-     datas.push(`
-     ('${riderDatas.career[0].number}', '${riderDatas.name}', '${riderDatas.surname}', '${riderDatas.birth_date}', '${riderDatas.country.name}', '${riderDatas.physical_attributes.height}', '${riderDatas.physical_attributes.weight}', '${riderDatas.biography.text.replaceAll("'", "''")}')`);
+      if (!riderDatas.biography.text) {
+        riderDatas.biography = { text: "" };
+      }
+
+      datas.push(`
+      ('${riderDatas.career[0].number}', '${riderDatas.name}', '${riderDatas.surname}', '${riderDatas.birth_date}', '${riderDatas.country.name}', '${riderDatas.physical_attributes.height}', '${riderDatas.physical_attributes.weight}', '${riderDatas.biography.text.replaceAll("'", "''")}')`);
     });
     // 
 
