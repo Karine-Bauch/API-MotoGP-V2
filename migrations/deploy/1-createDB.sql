@@ -58,7 +58,7 @@ CREATE TABLE "race" (
   "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   "name" TEXT NOT NULL,
   "date" TIMESTAMPTZ NOT NULL,
-  "rank" INT[],
+  "rank" TEXT ARRAY,
   "season_id" INT REFERENCES "season"("id"),
   "track_id" INT REFERENCES "track"("id"),
   "created_at" TIMESTAMPTZ NOT NULL DEFAULT now(),
@@ -98,4 +98,8 @@ CREATE TABLE "team_has_manufacturer" (
 
 
 COMMIT;
+
+-- to give all privileges to user :
+-- GRANT ALL PRIVILEGES ON rider, manufacturer, race, track, team, season, rider_has_race, rider_has_team, team_has_manufacturer TO motogpv2;
+
 
