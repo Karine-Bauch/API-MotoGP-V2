@@ -42,7 +42,7 @@ async function getRidersDatas(url) {
 
     setTimeout(() => {
       fs.writeFile(
-        `datas_scraping/sql_files/sql-test-riders.sql`,
+        `datas_scraping/sql_files/1-sql-test-riders.sql`,
         `INSERT INTO "rider" ("number", "firstname", "lastname", "birth_date", "country", "height", "weight", "biography") VALUES ${datas};`,
           function (err) {
             if (err) {
@@ -59,25 +59,6 @@ async function getRidersDatas(url) {
   }
 }
 
-// 2022 Season
-// getRidersDatas('https://api.motogp.com/riders-api/season/2022/riders?category=737ab122-76e1-4081-bedb-334caaa18c70');
-
-
-
-// All seasons should be https://api.motogp.com/riders-api/riders?category=737ab122-76e1-4081-bedb-334caaa18c70
-
-
-// Courses terminées : https://www.motogp.com/api/results-front/be/results-api/season/db8dc197-c7b2-4c1b-b3a4-6dc534c014ef/events?finished=1
-
-// Sessions (FP, Q et RACE) pour avoir l'id et récup la classification, etc : https://www.motogp.com/api/results-front/be/results-api/event/496b5a1e-9fcd-4ccb-abcb-e0d21d2d76d8/category/e8c110ad-64aa-4e8e-8a86-f2f152f6a942/sessions
-
-// classement de l'event : https://www.motogp.com/api/results-front/be/results-api/session/a80b1108-c605-4571-8a16-c9f2ba6e054b/classifications
-
-
-// Teams : https://api.motogp.com/riders-api/season/2022/teams?category=737ab122-76e1-4081-bedb-334caaa18c70
-
-// Un event : https://www.motogp.com/api/results-front/be/results-api/event/e59414f7-de19-400d-b7d2-6fce2b3c5448
-// Pour récupérer les circuits
 
 async function getRacesDatas(url) {
   try {
@@ -127,7 +108,7 @@ async function getRacesDatas(url) {
     
       setTimeout(() => {
         fs.writeFile(
-          `datas_scraping/sql_files/sql-test-races.sql`,
+          `datas_scraping/sql_files/2-sql-test-races.sql`,
           `INSERT INTO "race" ("name", "date", "rank") VALUES ${datas};`,
             function (err) {
               if (err) {
@@ -146,8 +127,13 @@ async function getRacesDatas(url) {
   };
 };
 
-getRacesDatas('https://www.motogp.com/api/results-front/be/results-api/season/db8dc197-c7b2-4c1b-b3a4-6dc534c014ef/events?finished=1');
+
+// 2022 Riders
+getRidersDatas('https://api.motogp.com/riders-api/season/2022/riders?category=737ab122-76e1-4081-bedb-334caaa18c70');
+
 // Races finished when get infos
+getRacesDatas('https://www.motogp.com/api/results-front/be/results-api/season/db8dc197-c7b2-4c1b-b3a4-6dc534c014ef/events?finished=1');
+
 
 
 // run node with `node --insecure-http-parser ./datas_scraping/seedingDB.js`
