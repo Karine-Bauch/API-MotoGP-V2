@@ -31,8 +31,7 @@ async function getRidersDatas(url) {
       }
 
       datas.push(`
-      ('${riderDatas.career[0].number}', '${riderDatas.name}', '${riderDatas.surname}', '${riderDatas.birth_date}', '${riderDatas.country.name}', '${riderDatas.physical_attributes.height}', '${riderDatas.physical_attributes.weight}', '${riderDatas.biography.text.replaceAll("'", "''")}')`);
-
+        ('${riderDatas.career[0].number}', '${riderDatas.name}', '${riderDatas.surname}', '${riderDatas.birth_date}', '${riderDatas.country.name}', '${riderDatas.physical_attributes.height}', '${riderDatas.physical_attributes.weight}', '${riderDatas.biography.text.replaceAll("'", "''")}')`);
     });
 
     setTimeout(() => {
@@ -42,7 +41,7 @@ async function getRidersDatas(url) {
 
     setTimeout(() => {
       fs.writeFile(
-        `datas_scraping/sql_files/1-sql-test-riders.sql`,
+        `datas_scraping/sql_files/1-riders.sql`,
         `INSERT INTO "rider" ("number", "firstname", "lastname", "birth_date", "country", "height", "weight", "biography") VALUES ${datas};`,
           function (err) {
             if (err) {
@@ -108,7 +107,7 @@ async function getRacesDatas(url) {
     
       setTimeout(() => {
         fs.writeFile(
-          `datas_scraping/sql_files/2-sql-test-races.sql`,
+          `datas_scraping/sql_files/2-races.sql`,
           `INSERT INTO "race" ("name", "date", "rank") VALUES ${datas};`,
             function (err) {
               if (err) {
