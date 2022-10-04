@@ -1,15 +1,15 @@
 import { Request, Response } from 'express';
 
-const datamapper = require('../models/mapper');
+const raceMapper = require('../models/raceMapper');
 
 module.exports = {
   async getAll(_: void, res: Response) {
-    const races = await datamapper.findAllRaces();
+    const races = await raceMapper.findAllRaces();
     return res.json(races);
   },
 
   async getOne(req: Request, res: Response) {
-    const race = await datamapper.findOneRace(req.params.id);
+    const race = await raceMapper.findOneRace(req.params.id);
     return res.json(race);
   },
 }

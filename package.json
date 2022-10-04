@@ -24,7 +24,9 @@
     "cors": "^2.8.5",
     "dotenv": "^16.0.2",
     "express": "^4.18.1",
-    "pg": "^8.8.0"
+    "pg": "^8.8.0",
+    "reflect-metadata": "^0.1.13",
+    "swagger-express-ts": "^1.1.0"
   },
   "devDependencies": {
     "@types/cors": "^2.8.12",
