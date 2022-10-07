@@ -10,7 +10,4 @@ router.route('/')
 router.route('/:id')
   .get(riderController.getOne);
 
-router.route('/number/:id')
-  .get(riderController.getByNumber);
-
 module.exports = router;

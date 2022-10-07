@@ -1,14 +1,22 @@
 const manufacturerClient = require('../config/db');
+import type { Manufacturer } from '../../../types/manufacturer';
 
-module.exports = {
+export class ManufacturerService {
 
-  async findAllManufacturers() {
+  async findAllManufacturers() : Promise<Manufacturer[]> {
     const result = await manufacturerClient.query('SELECT * FROM "manufacturer"');
     return result.rows;
-  },
-
-  async findOneManufacturer(manufacturerId: number) {
-    const result = await manufacturerClient.query(`SELECT * FROM "manufacturer" WHERE "manufacturer"."id" = ${manufacturerId}`);
-    return result.rows[0];
   }
-}
+
+  async findOneManufacturer(manufacturerId: number) : Promise<Manufacturer> {
+    try {
+      const result = await manufacturerClient.query(
+        'SELECT * FROM "manufacturer" WHERE "manufacturer"."id" = $1', [manufacturerId]
+      );
+      return result.rows[0];
+    } catch (err) {
+      throw err;
+    };
+  }
+  
+};

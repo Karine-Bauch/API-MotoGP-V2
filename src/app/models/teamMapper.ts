@@ -1,14 +1,23 @@
 const teamClient = require('../config/db');
+import type { Team } from '../../../types/team';
 
-module.exports = {
+export class TeamService {
 
-  async findAllTeams() {
+  async findAllTeams() : Promise<Team[]> {
     const result = await teamClient.query('SELECT * FROM "team"');
     return result.rows;
-  },
-
-  async findOneTeam(teamId: number) {
-    const result = await teamClient.query(`SELECT * FROM "team" WHERE "team"."id" = ${teamId}`);
-    return result.rows[0];
   }
-}
+
+  async findOneTeam(teamId: number) : Promise<Team> {
+    try {
+      const result = await teamClient.query(
+        'SELECT * FROM "team" WHERE "team"."id" = $1',
+        [teamId]
+      );
+      return result.rows[0];
+    } catch (err) {
+      throw err;
+    };
+  }
+
+};
