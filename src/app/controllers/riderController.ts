@@ -1,20 +1,16 @@
 import { Request, Response } from 'express';
+import { RiderService } from '../models/riderMapper';
 
-const riderMapper = require('../models/riderMapper');
+const service = new RiderService();
 
 module.exports = {
   async getAll(_: void, res: Response) {
-    const riders = await riderMapper.findAllRiders();
-    return res.json(riders);
+    const riders = await service.findAllRiders();
+    return res.status(200).json(riders);
   },
 
   async getOne(req: Request, res: Response) {
-    const rider = await riderMapper.findOneRider(req.params.id);
-    return res.json(rider);
-  },
-
-  async getByNumber(req: Request, res: Response) {
-    const rider = await riderMapper.findRiderByNumber(req.params.id);
-    return res.json(rider);
+    const rider = await service.findOneRider(Number(req.params.id));
+    return res.status(200).json(rider);
   }
-}
+};

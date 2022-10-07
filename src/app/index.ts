@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import router from './router';
+// import swaggerUi from 'swagger-ui-express';
 
 const app = express();
 

@@ -1,0 +1,8 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "2.0.0",
+    "title": "MotoGP API",
+    "description": "A simple API to get all informaiotns from MotoGP championship"
+  }
+}

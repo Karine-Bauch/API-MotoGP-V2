@@ -1,15 +1,16 @@
 import { Request, Response } from 'express';
+import { TrackService } from '../models/trackMapper';
 
-const trackMapper = require('../models/trackMapper');
+const service = new TrackService();
 
 module.exports = {
   async getAll(_: void, res: Response) {
-    const tracks = await trackMapper.findAllTracks();
+    const tracks = await service.findAllTracks();
     return res.json(tracks);
   },
 
   async getOne(req: Request, res: Response) {
-    const track = await trackMapper.findOneTrack(req.params.id);
+    const track = await service.findOneTrack(Number(req.params.id));
     return res.json(track);
   },
 }

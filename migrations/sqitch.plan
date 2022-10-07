@@ -2,3 +2,4 @@
 %project=api-motogp-v2
 
 1-createDB 2022-09-21T15:43:35Z System Administrator <root@MacBook-Pro-de-Karine.local> # creation of the DB motogpv2
+2-datatype-modif 2022-10-07T07:48:29Z System Administrator <root@MacBook-Pro-de-Karine.local> # change height and weight of riders datatypes
