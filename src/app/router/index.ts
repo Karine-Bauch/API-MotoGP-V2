@@ -22,9 +22,5 @@ router.use('/seasons', seasonRouter);
 
 router.use('/manufacturers', manufacturerRouter);
 
-// router.use('/*', () => {
-//   console.log('Error 404: API route not found');
-// })
-
 export default router;
 

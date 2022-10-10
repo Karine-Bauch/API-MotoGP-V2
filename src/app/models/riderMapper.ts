@@ -9,15 +9,10 @@ export class RiderService {
   }
 
   async findOneRider(riderId: number) : Promise<Rider> {
-    try {
       const result = await riderClient.query(
         'SELECT * FROM "rider" WHERE "rider"."id" = $1',
         [riderId]
       );
       return result.rows[0];
-    } catch (err) {
-      throw err;
-    };
   }
-  
 };

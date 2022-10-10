@@ -9,14 +9,10 @@ export class TrackService {
   }
 
   async findOneTrack(trackId: number) : Promise<Track> {
-    try {
       const result = await trackClient.query(
         'SELECT * FROM "track" WHERE "track"."id" = $1',
         [trackId]
       );
       return result.rows[0];
-    } catch (err) {
-      throw err;
-    };
   }
 };

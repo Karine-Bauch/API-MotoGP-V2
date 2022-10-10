@@ -9,15 +9,10 @@ export class TeamService {
   }
 
   async findOneTeam(teamId: number) : Promise<Team> {
-    try {
       const result = await teamClient.query(
         'SELECT * FROM "team" WHERE "team"."id" = $1',
         [teamId]
       );
       return result.rows[0];
-    } catch (err) {
-      throw err;
-    };
   }
-
 };

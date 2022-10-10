@@ -9,18 +9,10 @@ export class RaceService {
   }
 
   async findOneRace(raceId: number) : Promise<Race> {
-    try {
       const result = await raceClient.query(
         'SELECT * FROM "race" WHERE "race"."id" = $1',
         [raceId]
       );
       return result.rows[0];
-    } catch (err) {
-      throw err;
-    };
-  }
-
+  };
 };
-
-
-  

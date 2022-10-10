@@ -9,14 +9,11 @@ export class ManufacturerService {
   }
 
   async findOneManufacturer(manufacturerId: number) : Promise<Manufacturer> {
-    try {
       const result = await manufacturerClient.query(
-        'SELECT * FROM "manufacturer" WHERE "manufacturer"."id" = $1', [manufacturerId]
+        'SELECT * FROM "manufacturer" WHERE "manufacturer"."id" = $1',
+        [manufacturerId]
       );
       return result.rows[0];
-    } catch (err) {
-      throw err;
-    };
   }
   
 };
