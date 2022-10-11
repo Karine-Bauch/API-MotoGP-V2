@@ -8,7 +8,7 @@ const manufacturerRouter = require('./manufacturerRouter');
 
 const router = express.Router();
 
-router.all('/', (req, res) => { res.send('page accueil') });
+router.all('/', (req, res) => { res.status(200).send('Bienvenue sur la page accueil de MotoGP API') });
 
 router.use('/riders', riderRouter);
 

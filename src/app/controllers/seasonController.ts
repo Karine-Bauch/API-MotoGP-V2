@@ -17,7 +17,7 @@ module.exports = {
       throw new ApiError(404, 'Season not found');
     };
 
-    return res.json(season);
+    return res.status(200).json(season);
   },
 
   async getByYear(req: Request, res: Response) {

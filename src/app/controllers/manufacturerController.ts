@@ -17,6 +17,6 @@ module.exports = {
       throw new ApiError(404, 'Manufacturer not found');
     };
     
-    return res.status(200).status(200).json(manufacturer);
+    return res.status(200).json(manufacturer);
   }
 }

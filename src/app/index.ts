@@ -18,5 +18,7 @@ app.use(cors({ origin: process.env.CORS_DOMAIN ?? '*' }));
 
 app.use(router);
 
+app.use((req, res) => { res.status(404).send('Vous vous êtes perdu on dirait !') })
+
 
 module.exports = app;
