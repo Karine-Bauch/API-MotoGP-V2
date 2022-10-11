@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import { TeamService } from '../models/teamMapper';
+import ApiError from '../helpers/error';
 
 const service = new TeamService();
 
@@ -11,6 +12,11 @@ module.exports = {
 
   async getOne(req: Request, res: Response) {
     const team = await service.findOneTeam(Number(req.params.id));
-    return res.json(team);
+    
+    if (!team) {
+      throw new ApiError(404, 'Team not found');
+    };
+
+    return res.status(200).json(team);
   }
 }

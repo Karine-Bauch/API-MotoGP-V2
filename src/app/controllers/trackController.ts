@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import { TrackService } from '../models/trackMapper';
+import ApiError from '../helpers/error';
 
 const service = new TrackService();
 
@@ -11,6 +12,11 @@ module.exports = {
 
   async getOne(req: Request, res: Response) {
     const track = await service.findOneTrack(Number(req.params.id));
-    return res.json(track);
+    
+    if (!track) {
+      throw new ApiError(404, 'Track not found');
+    };
+
+    return res.status(200).json(track);
   },
 }

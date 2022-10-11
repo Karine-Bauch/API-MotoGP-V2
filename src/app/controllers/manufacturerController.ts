@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import { ManufacturerService } from '../models/manufacturerMapper';
+import ApiError from '../helpers/error';
 
 const service = new ManufacturerService();
 
@@ -11,6 +12,11 @@ module.exports = {
 
   async getOne(req: Request, res: Response) {
     const manufacturer = await service.findOneManufacturer(Number(req.params.id));
-    return res.status(200).json(manufacturer);
+    
+    if (!manufacturer) {
+      throw new ApiError(404, 'Manufacturer not found');
+    };
+    
+    return res.status(200).status(200).json(manufacturer);
   }
 }

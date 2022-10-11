@@ -1,15 +1,16 @@
 import express from 'express';
 const seasonController = require('../controllers/seasonController');
+const controllerHandler = require('../helpers/controllerHandler');
 
 const router = express.Router();
 
 router.route('/')
-  .get(seasonController.getAll);
+  .get(controllerHandler(seasonController.getAll));
 
 router.route('/:id')
-  .get(seasonController.getOne);
+  .get(controllerHandler(seasonController.getOne));
 
 router.route('/year/:id')
-  .get(seasonController.getByYear);
+  .get(controllerHandler(seasonController.getByYear));
 
 module.exports = router;

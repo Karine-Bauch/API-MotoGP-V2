@@ -1,13 +1,14 @@
 import express from 'express';
 const teamController = require('../controllers/teamController');
+const controllerHandler = require('../helpers/controllerHandler');
 
 const router = express.Router();
 
 router.route('/')
-  .get(teamController.getAll);
+  .get(controllerHandler(teamController.getAll));
 
 router.route('/:id')
-  .get(teamController.getOne);
+  .get(controllerHandler(teamController.getOne));
 
 
 module.exports = router;
