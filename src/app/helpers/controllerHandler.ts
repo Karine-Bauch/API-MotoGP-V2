@@ -4,6 +4,10 @@ module.exports = (controller: any) => async (req: Request, res: Response, next: 
   try {
     await controller(req, res, next);
   } catch (err: any) {
+    if (Number.isNaN(Number(err.statusCode))) {
+      err.statusCode = 500;
+    };
+
     res.status(err.statusCode).json({
       status: 'Error',
       statusCode: err.statusCode,
