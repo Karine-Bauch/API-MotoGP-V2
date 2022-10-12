@@ -4,7 +4,7 @@ const config = {};
 
 const pool = new Pool(config);
 
-module.exports = {
+export const client = {
   originalClient: pool,
   async query(...params: any) {
     return this.originalClient.query(...params);
