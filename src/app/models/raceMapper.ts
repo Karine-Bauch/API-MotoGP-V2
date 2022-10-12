@@ -1,15 +1,15 @@
-const raceClient = require('../config/db');
+import { client } from '../config/db';
 import type { Race } from '../../../types/race';
 
 export class RaceService {
     
   async findAllRaces() : Promise<Race[]> {
-    const result = await raceClient.query('SELECT * FROM "race"');
+    const result = await client.query('SELECT * FROM "race"');
     return result.rows;
   }
 
   async findOneRace(raceId: number) : Promise<Race> {
-      const result = await raceClient.query(
+      const result = await client.query(
         'SELECT * FROM "race" WHERE "race"."id" = $1',
         [raceId]
       );

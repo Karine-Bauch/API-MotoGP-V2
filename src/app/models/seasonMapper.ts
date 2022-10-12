@@ -1,15 +1,15 @@
-const seasonClient = require('../config/db');
+import { client } from '../config/db';
 import type { Season } from '../../../types/season'; 
 
 export class SeasonService {
 
   async findAllSeasons() : Promise<Season[]> {
-    const result = await seasonClient.query('SELECT * FROM "season"');
+    const result = await client.query('SELECT * FROM "season"');
     return result.rows;
   }
 
   async findOneSeason(seasonId: number) : Promise<Season> {
-      const result = await seasonClient.query(
+      const result = await client.query(
         'SELECT * FROM "season" WHERE "season"."id" = $1',
         [seasonId]
       );
@@ -17,7 +17,7 @@ export class SeasonService {
   }
   
   async findByYear(year: number) : Promise<Season> {
-      const result = await seasonClient.query(
+      const result = await client.query(
         'SELECT * FROM "season" WHERE "season"."year" = $1',
         [year]
       );

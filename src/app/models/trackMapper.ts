@@ -1,15 +1,15 @@
-const trackClient = require('../config/db');
+import { client } from '../config/db';
 import type { Track } from '../../../types/track';
 
 export class TrackService {
   
   async findAllTracks() : Promise<Track[]> {
-    const result = await trackClient.query('SELECT * FROM "track"');
+    const result = await client.query('SELECT * FROM "track"');
     return result.rows;
   }
 
   async findOneTrack(trackId: number) : Promise<Track> {
-      const result = await trackClient.query(
+      const result = await client.query(
         'SELECT * FROM "track" WHERE "track"."id" = $1',
         [trackId]
       );
