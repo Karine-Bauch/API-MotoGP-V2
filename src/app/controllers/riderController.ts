@@ -4,7 +4,7 @@ import ApiError from '../helpers/error';
 
 const service = new RiderService();
 
-module.exports = {
+export const riderController = {
   async getAll(_: void, res: Response) {
     const riders = await service.findAllRiders();
     return res.status(200).json(riders);

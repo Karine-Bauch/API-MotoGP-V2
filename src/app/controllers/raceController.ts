@@ -4,7 +4,7 @@ import ApiError from '../helpers/error';
 
 const service = new RaceService();
 
-module.exports = {
+export const raceController = {
   async getAll(_: void, res: Response) {
     const races = await service.findAllRaces();
     return res.status(200).json(races);

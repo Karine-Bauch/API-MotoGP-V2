@@ -4,7 +4,7 @@ import ApiError from '../helpers/error';
 
 const service = new TrackService();
 
-module.exports = {
+export const trackController = {
   async getAll(_: void, res: Response) {
     const tracks = await service.findAllTracks();
     return res.json(tracks);

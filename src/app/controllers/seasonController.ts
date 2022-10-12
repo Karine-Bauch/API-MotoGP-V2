@@ -4,7 +4,7 @@ import ApiError from '../helpers/error';
 
 const service = new SeasonService();
 
-module.exports = {
+export const seasonController = {
   async getAll(_: void, res: Response) {
     const seasons = await service.findAllSeasons();
     return res.status(200).json(seasons);

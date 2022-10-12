@@ -1,10 +1,10 @@
 import express from 'express';
-const riderRouter = require('./riderRouter');
-const raceRouter = require('./raceRouter');
-const trackRouter = require('./trackRouter');
-const teamRouter = require('./teamRouter');
-const seasonRouter = require('./seasonRouter');
-const manufacturerRouter = require('./manufacturerRouter');
+import { manufacturerRouter } from './manufacturerRouter';
+import { raceRouter } from './raceRouter';
+import { riderRouter } from './riderRouter';
+import { seasonRouter } from './seasonRouter';
+import { teamRouter } from './teamRouter';
+import { trackRouter } from './trackRouter';
 
 const router = express.Router();
 

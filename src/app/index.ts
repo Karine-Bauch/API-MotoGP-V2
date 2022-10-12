@@ -21,4 +21,4 @@ app.use(router);
 app.use((req, res) => { res.status(404).send('Vous vous êtes perdu on dirait !') })
 
 
-module.exports = app;
+export default app;

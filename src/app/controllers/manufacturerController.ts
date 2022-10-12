@@ -4,7 +4,7 @@ import ApiError from '../helpers/error';
 
 const service = new ManufacturerService();
 
-module.exports = {
+export const manufacturerController = {
   async getAll(_: void, res: Response) {
     const manufacturers = await service.findAllManufacturers();
     return res.status(200).json(manufacturers);

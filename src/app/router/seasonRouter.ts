@@ -1,6 +1,8 @@
 import express from 'express';
-const seasonController = require('../controllers/seasonController');
+// const seasonController = require('../controllers/seasonController');
+import { seasonController } from '../controllers/seasonController';
 const controllerHandler = require('../helpers/controllerHandler');
+//TODO modify require into import with the good type TS
 
 const router = express.Router();
 
@@ -13,4 +15,4 @@ router.route('/:id')
 router.route('/year/:id')
   .get(controllerHandler(seasonController.getByYear));
 
-module.exports = router;
+export { router as seasonRouter};

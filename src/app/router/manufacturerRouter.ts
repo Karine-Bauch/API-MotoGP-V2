@@ -1,6 +1,8 @@
 import express from 'express';
-const manufacturerController = require('../controllers/manufacturerController');
+// const manufacturerController = require('../controllers/manufacturerController');
+import { manufacturerController } from '../controllers/manufacturerController';
 const controllerHandler = require('../helpers/controllerHandler');
+// import { controllerHandler } from '../helpers/controllerHandler';
 
 const router = express.Router();
 
@@ -10,4 +12,4 @@ router.route('/')
 router.route('/:id')
   .get(controllerHandler(manufacturerController.getOne));
 
-module.exports = router;
+export { router as manufacturerRouter};

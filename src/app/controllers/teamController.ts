@@ -4,7 +4,7 @@ import ApiError from '../helpers/error';
 
 const service = new TeamService();
 
-module.exports = {
+export const teamController = {
   async getAll(_: void, res: Response) {
     const teams = await service.findAllTeams();
     return res.json(teams);
