@@ -1,9 +1,7 @@
 import express from 'express';
-// const raceController = require('../controllers/raceController');
-import { raceController } from '../controllers/raceController';
-const controllerHandler = require('../helpers/controllerHandler');
-//TODO modify require into import with the good type TS
 
+import { raceController } from '../controllers/raceController';
+import { controllerHandler } from '../helpers/controllerHandler';
 const router = express.Router();
 
 router.route('/')

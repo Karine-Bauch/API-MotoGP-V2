@@ -1,8 +1,7 @@
 import express from 'express';
-// const teamController = require('../controllers/teamController');
+
 import { teamController } from '../controllers/teamController';
-const controllerHandler = require('../helpers/controllerHandler');
-//TODO modify require into import with the good type TS
+import { controllerHandler } from '../helpers/controllerHandler';
 
 const router = express.Router();
 
