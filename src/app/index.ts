@@ -12,7 +12,8 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(cors({ origin: process.env.CORS_DOMAIN ?? '*' }));
 
-//TODO config views
+app.set('view engine', 'ejs');
+
 //TODO config static folder
 //TODO config API DOCS / JSDOCS
 
