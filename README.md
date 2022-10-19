@@ -1,6 +1,6 @@
 # API-MotoGP-V2
 
-## Work in Progress
+## Work in Progress - see more details below
 
 
 1. Install DB :
