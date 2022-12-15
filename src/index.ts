@@ -6,7 +6,7 @@ import app from './app';
 
 dotenv.config();
 
-const port = process.env.PORT;
+const port = process.env.PORT ?? 5002;
 
 const server = http.createServer(app);
 

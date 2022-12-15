@@ -10,7 +10,7 @@ app.use(express.json());
 // Parse urlencoded
 app.use(express.urlencoded({ extended: true }));
 
-app.use(cors({ origin: process.env.CORS_DOMAIN }));
+app.use(cors({ origin: process.env.CORS_DOMAIN ?? '*' }));
 
 app.set('view engine', 'ejs');
 
